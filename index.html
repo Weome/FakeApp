@@ -899,11 +899,12 @@
 			req.send();
 			if (req.status == 200)
 				obj = JSON.parse(req.response);
-			for (let key in obj) {
-				if (obj[key])
-					document.getElementById(key).style.fill = "yellow";
-				else
-					document.getElementById(key).style.fill = "black";
+			for (let i = 0; i < obj.length; i += 1) {
+				if (obj[i].power) {
+					document.getElementById(obj[i].id).style.fill = "yellow";
+				} else {
+					document.getElementById(obj[i].id).style.fill = "black";
+				}
 			}
 		}, 1000)
 

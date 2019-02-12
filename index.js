@@ -19,7 +19,15 @@ app.get('/', function(req, res) {
 });
 
 app.get('/getComponents', function(req, res) {
-	res.json(components);
+	const keys = Object.keys(components);
+	const devices = keys.map(f => ({
+		id: f,
+		name: f,
+		location: "Bedroom",
+		power: components[f],
+		model: f.indexOf("light") > -1 ? "Light" : "TV",
+	}));
+	res.json(devices);
 });
 
 app.get('/toggleComponent', function(req, res) {
